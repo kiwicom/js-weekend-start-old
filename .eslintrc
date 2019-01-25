@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "plugin:fp/recommended"
+  ],
+  "globals": {
+    "BASE_URL": true
+  },
+  "plugins": ["prettier", "fp", "react-hooks"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".js", ".jsx"] }
+    ],
+    "import/extensions": "error",
+    "import/no-unresolved": "error",
+    "react/jsx-no-bind": "error",
+    "no-var": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"]
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react/prop-types": "warning",
+    "react/react-in-jsx-scope": "off", // next
+    "fp/no-nil": "off", // Side effects
+    "fp/no-class": "off", // React
+    "fp/no-this": "off", // React
+    "fp/no-mutation": "off", // React
+    "fp/no-unused-expression": "off"
+  }
+}
