@@ -1,1 +1,3 @@
-export default () => <h1>Hello JS Weekend</h1>;
+import Alert from "@kiwicom/orbit-components/lib/Alert"
+
+export default () => <Alert type="success">Hello JS weekend!</Alert>
