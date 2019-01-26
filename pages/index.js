@@ -20,10 +20,10 @@ const FlyForm = ({
   places = defaultValues.places
 }) => (
   <ContentContainer>
-    <Heading type="title1" spaceAfter="large">
+    <Heading type="title1" spaceAfter="largest">
       What are you interested in?
     </Heading>
-    <Interests defaultValue="food" />
+    <Interests defaultValue="drinks" />
     <NomadForm>
       <StyledOrigin>
         <Heading type="title1" spaceAfter="medium">

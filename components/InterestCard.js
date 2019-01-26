@@ -1,48 +1,73 @@
 import * as React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import Stack from "@kiwicom/orbit-components/lib/Stack"
 import Text from "@kiwicom/orbit-components/lib/Text"
 import Radio from "@kiwicom/orbit-components/lib/Radio"
-import { defaultTheme } from "@kiwicom/orbit-components"
+import defaultTheme from "@kiwicom/orbit-components/lib/defaultTokens"
+import mq from "@kiwicom/orbit-components/lib/utils/mediaQuery"
 
 const StyledInterestCard = styled.div`
-  display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: space-between;
   box-sizing: border-box;
-  padding: ${({ theme }) => theme.orbit.spaceMedium};
-  background-color: ${({ theme }) => theme.orbit.paletteWhite};
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  background: ${({ theme }) => theme.orbit.paletteWhite};
   border-radius: ${({ theme }) => theme.orbit.borderRadiusNormal};
-  border: 1px solid ${({ theme }) => theme.orbit.paletteCloudLight};
-  max-width: 180px;
-  height: 60px;
+  padding: ${({ theme }) => theme.orbit.spaceMedium};
+  box-shadow: 0 2px 4px 0 rgba(23, 27, 30, 0.1);
+  transition: box-shadow ${({ theme }) => theme.orbit.durationFast}
+      ease-in-out,
+    transform ${({ theme }) => theme.orbit.durationFast} ease-in-out;
+  ${mq.largeMobile(css`
+    max-width: 180px;
+  `)};
+  :hover,
+  :focus {
+    box-shadow: 0 4px 12px 0 rgba(23, 27, 30, 0.1);
+    outline: none;
+  }
+  :active {
+    transform: scale(0.98);
+  }
 `
 
 StyledInterestCard.defaultProps = {
   theme: defaultTheme
 }
 
-const StyledIcon = styled.div`
-  flex-shrink: 0;
-  margin-right: ${({ theme }) => theme.orbit.spaceMedium};
+const StyledContent = styled.div`
+  width: 100%;
 `
 
-StyledIcon.defaultProps = {
-  theme: defaultTheme
-}
+const StyledIcon = styled.div`
+  display: flex;
+  width: 24px;
+  height: 100%;
+  align-items: center;
+`
 
 const StyledRadio = styled.div`
-  > label {
+  & input {
     width: auto;
   }
 `
-const InterestCard = ({ title, value, icon, checked }) => (
-  <StyledInterestCard>
-    <StyledIcon>{icon}</StyledIcon>
-    <Text weight="bold">{title}</Text>
-    <StyledRadio>
-      <Radio value={value} checked={checked} />
-    </StyledRadio>
+const InterestCard = ({ title, icon, checked, value, onChange }) => (
+  <StyledInterestCard onClick={() => onChange({ target: { value } })}>
+    <Stack direction="row" justify="between" align="center">
+      <StyledIcon>{icon}</StyledIcon>
+      <StyledContent>
+        <Text weight="bold">{title}</Text>
+      </StyledContent>
+      <StyledRadio>
+        <Radio
+          checked={checked}
+          value={value}
+          name="interest"
+          onChange={onChange}
+        />
+      </StyledRadio>
+    </Stack>
   </StyledInterestCard>
 )
 
