@@ -5,6 +5,7 @@ import styled from "styled-components"
 import ContentContainer from "../components/ContentContainer"
 import PlacesToVisit from "../components/PlacesToVisit"
 import TopPart, { defaultValues } from "../components/TopPart"
+import Interests from "../components/Interests"
 
 const NomadForm = styled.div`
   max-width: 816px;
@@ -19,8 +20,10 @@ const FlyForm = ({
   places = defaultValues.places
 }) => (
   <ContentContainer>
-    {/* TODO Heading  What are you interested in? */}
-    {/* TODO Interests */}
+    <Heading type="title1" spaceAfter="large">
+      What are you interested in?
+    </Heading>
+    <Interests />
     <NomadForm>
       <StyledOrigin>
         <Heading type="title1" spaceAfter="medium">
