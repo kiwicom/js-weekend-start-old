@@ -23,7 +23,7 @@ const FlyForm = ({
     <Heading type="title1" spaceAfter="large">
       What are you interested in?
     </Heading>
-    <Interests />
+    <Interests defaultValue="food" />
     <NomadForm>
       <StyledOrigin>
         <Heading type="title1" spaceAfter="medium">
